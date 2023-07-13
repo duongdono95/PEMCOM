@@ -1,0 +1,100 @@
+.primary-button {
+  min-width: 250px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 5px;
+  padding: 10px 25px;
+  background-color: var(--signature);
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0);
+  cursor: pointer;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    box-shadow: 2px 2px 5px var(--white02);
+  }
+}
+
+.secondary-button {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+  border: 2px solid var(--black05);
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    box-shadow: 2px 2px 5px var(--white02);
+  }
+}
+
+.google-auth-btn {
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  gap: 5px;
+  padding: 10px;
+  background-color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 2px 2px 5px var(--white02);
+  }
+  .google-icon {
+    width: 16px;
+    height: 18px;
+    background-size: cover;
+  }
+}
+
+.back-btn {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  text-decoration: underline;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+.loading {
+  animation: spin 1s infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.x-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    box-shadow: 2px 2px 15px var(--white05);
+  }
+}
