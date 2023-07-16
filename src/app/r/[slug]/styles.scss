@@ -1,0 +1,48 @@
+.r-slug-layout {
+  width: 100%;
+  &-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .left-container {
+    width: 65%;
+    .title {
+      padding: 20px 0;
+    }
+  }
+  .right-container {
+    width: 30%;
+    border-radius: 10px;
+    border: 1px solid var(--black02);
+    overflow: hidden;
+    .container-header {
+      padding: 20px;
+      background-color: var(--signature05);
+    }
+    .container-body {
+      padding: 0 20px;
+    }
+    .item {
+      display: flex;
+      padding: 30px 0 10px 0;
+      border-bottom: 1px solid var(--black01);
+      &:nth-child(3) {
+        border-bottom: none;
+      }
+    }
+    .item-title {
+      opacity: 0.7;
+      width: 40%;
+    }
+    button {
+      width: 100%;
+      margin: 20px 0;
+    }
+  }
+}
+.r-slug-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

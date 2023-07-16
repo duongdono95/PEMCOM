@@ -1,0 +1,17 @@
+.NavMenu {
+  font-size: 20px;
+  font-weight: 600;
+  a {
+    color: var(--signature);
+    border: 1px solid var(--signature);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    &:hover {
+      background-color: var(--signature);
+      color: white;
+      box-shadow: 2px 2px 5px var(--black02);
+    }
+  }
+}

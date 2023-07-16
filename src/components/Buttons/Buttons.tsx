@@ -1,7 +1,13 @@
 import React from "react";
 import "./Buttons.scss";
 import Link from "next/link";
-import { ChevronLeft, Loader, X } from "lucide-react";
+import {
+  ChevronLeft,
+  Loader,
+  X,
+  ArrowBigDown,
+  ArrowBigUp,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface GeneralButtonProps
@@ -12,11 +18,19 @@ interface GeneralButtonProps
   isLoading?: boolean;
 }
 
-const GeneralButton = React.forwardRef<HTMLButtonElement, GeneralButtonProps>(
-  ({ isLoading, isPrimary, content, disabled, ...props }, ref) => {
+const GeneralButton = React.forwardRef<
+  HTMLButtonElement,
+  GeneralButtonProps
+>(
+  (
+    { isLoading, isPrimary, content, disabled, ...props },
+    ref
+  ) => {
     return (
       <button
-        className={`${isPrimary ? "primary" : "secondary"}-button`}
+        className={`${
+          isPrimary ? "primary" : "secondary"
+        }-button`}
         disabled={disabled}
         ref={ref}
         {...props}
@@ -47,11 +61,42 @@ const CloseButton = () => {
   const router = useRouter();
   return (
     <div className="x-btn" onClick={() => router.back()}>
-      <X color="var(--signature)" strokeWidth={3} />
+      <X color="white" strokeWidth={3} />
     </div>
   );
 };
-
+const VoteUpButton = ({
+  isVoted,
+}: {
+  isVoted?: boolean;
+}) => {
+  return (
+    <div className="vote-up-button">
+      <ArrowBigUp
+        fill={isVoted ? "var(--signature)" : "white"}
+        color={
+          isVoted ? "var(--signature)" : "var(--black05)"
+        }
+      />
+    </div>
+  );
+};
+const VoteDownButton = ({
+  isVoted,
+}: {
+  isVoted?: boolean;
+}) => {
+  return (
+    <div className="vote-down-button">
+      <ArrowBigDown
+        fill={isVoted ? "var(--signature)" : "white"}
+        color={
+          isVoted ? "var(--signature)" : "var(--black05)"
+        }
+      />
+    </div>
+  );
+};
 export const Buttons = {
   general: GeneralButton,
   google: () => (
@@ -68,4 +113,12 @@ export const Buttons = {
   ),
   back: BackButton,
   close: CloseButton,
+  backToHome: () => (
+    <Link className="back-to-home" href="/">
+      <ChevronLeft />
+      Home
+    </Link>
+  ),
+  voteUp: VoteUpButton,
+  voteDown: VoteDownButton,
 };

@@ -1,0 +1,28 @@
+.mini-create-post {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  padding: 10px 20px;
+  background-color: var(--black005);
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px var(--black005);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--black01);
+  }
+  .group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .item {
+    padding: 10px 20px;
+  }
+  .item:nth-child(1) {
+    flex-grow: 1;
+    border: 1px solid var(--black02);
+    border-radius: 10px;
+    background-color: white;
+  }
+}

@@ -1,0 +1,29 @@
+.dropdown-menu {
+  width: 100%;
+  background-color: var(--white01);
+  backdrop-filter: blur(10px);
+  list-style: none;
+  margin-top: 5px;
+  z-index: 1000000000000;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px var(--black02);
+  .item {
+    width: 100%;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--black02);
+    }
+    &:nth-child(1) {
+      background-color: var(--signature05);
+      &:hover {
+        background-color: var(--signature);
+      }
+    }
+  }
+}

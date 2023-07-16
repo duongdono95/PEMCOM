@@ -1,0 +1,22 @@
+.Navbar {
+  width: 100%;
+  max-width: var(--default-layout-width);
+  padding: 5px 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  .navbar-item {
+    max-width: calc(100% / 3);
+    width: 100%;
+
+    &:nth-child(3) {
+      display: flex;
+      justify-content: right;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .search-bar {
+    display: none;
+  }
+}

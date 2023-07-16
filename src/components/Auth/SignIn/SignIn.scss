@@ -1,0 +1,22 @@
+.SignIn {
+  min-width: 350px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  gap: 20px;
+  padding: 1% 2% 3% 2%;
+  .close {
+    margin-left: 100%;
+  }
+  .condition {
+    font-size: 14px;
+  }
+  .sign-up-link {
+    text-decoration: underline !important;
+  }
+}

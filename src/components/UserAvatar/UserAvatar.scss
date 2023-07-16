@@ -1,0 +1,35 @@
+.user-avatar {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 5px 5px;
+  gap: 5px;
+  .image {
+    position: relative;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+  }
+  .online {
+    position: absolute;
+    right: -15%;
+    bottom: 0%;
+    width: 18px;
+    height: 18px;
+    background-color: rgb(81, 185, 81);
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  .avatar-fall-back {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(175, 175, 175);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
