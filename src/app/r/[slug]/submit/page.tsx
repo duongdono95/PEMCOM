@@ -2,6 +2,7 @@ import { Buttons } from "@/components/Buttons/Buttons";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { OutputData } from "@editorjs/editorjs";
+import { Editor } from "@/components/Editor/Editor";
 interface pageProps {
   params: {
     slug: string;
@@ -17,6 +18,7 @@ const page = async ({ params }: pageProps) => {
   return (
     <div className="slug-submit-page">
       <h3>Create a new Post</h3>
+      <Editor subredditId={subreddit} />
     </div>
   );
 };
