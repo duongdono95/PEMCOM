@@ -17,8 +17,13 @@ const page = async ({ params }: pageProps) => {
   if (!subreddit) return notFound();
   return (
     <div className="slug-submit-page">
-      <h3>Create a new Post</h3>
-      <Editor subredditId={subreddit} />
+      <Editor subredditId={subreddit.id} />
+      <Buttons.general
+        type="submit"
+        isPrimary
+        content="Post"
+        form="subreddit-post-form"
+      />
     </div>
   );
 };

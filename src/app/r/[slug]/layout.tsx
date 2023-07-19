@@ -31,7 +31,7 @@ const Layout = async ({
       <Buttons.backToHome />
       <div className="r-slug-layout-content">
         <div className="left-container">
-          <h1 className="title">r/{slug}</h1>
+          <h2 className="title">r/{slug}</h2>
           {children}
         </div>
         <div className="right-container">

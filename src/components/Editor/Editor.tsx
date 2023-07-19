@@ -3,13 +3,21 @@
 import EditorJS from "@editorjs/editorjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { z } from "zod";
 import { uploadFiles } from "@/lib/uploadthing";
-import { PostCreationRequest, PostValidator } from "@/lib/validators/post";
+import {
+  PostCreationRequest,
+  PostValidator,
+} from "@/lib/validators/post";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-
+import "./Editor.scss";
 // import "@/styles/editor.css";
 import { EDITOR_TOOLS, useFormImport } from "./EditorTools";
 import { customToast } from "@/hooks/toast/customToast";
@@ -20,7 +28,9 @@ interface EditorProps {
   subredditId: string;
 }
 
-export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
+export const Editor: React.FC<EditorProps> = ({
+  subredditId,
+}) => {
   const {
     register,
     handleSubmit,
@@ -36,7 +46,8 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   const ref = useRef<EditorJS>();
   const _titleRef = useRef<HTMLTextAreaElement>(null);
   const router = useRouter();
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isMounted, setIsMounted] =
+    useState<boolean>(false);
   const pathname = usePathname();
 
   const { mutate: createPost } = useMutation({
@@ -45,8 +56,15 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       content,
       subredditId,
     }: PostCreationRequest) => {
-      const payload: PostCreationRequest = { title, content, subredditId };
-      const { data } = await axios.post("/api/subreddit/post/create", payload);
+      const payload: PostCreationRequest = {
+        title,
+        content,
+        subredditId,
+      };
+      const { data } = await axios.post(
+        "/api/subreddit/post/create",
+        payload
+      );
       return data;
     },
     onError: () => {
@@ -56,12 +74,17 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     },
     onSuccess: () => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
-      const newPathname = pathname.split("/").slice(0, -1).join("/");
+      const newPathname = pathname
+        .split("/")
+        .slice(0, -1)
+        .join("/");
       router.push(newPathname);
 
       router.refresh();
 
-      return customToast.success("Your post has been published.");
+      return customToast.success(
+        "Your post has been published."
+      );
     },
   });
 
@@ -99,7 +122,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
               uploader: {
                 async uploadByFile(file: File) {
                   // upload to uploadthing
-                  const [res] = await uploadFiles([file], "imageUploader");
+                  const [res] = await uploadFiles(
+                    [file],
+                    "imageUploader"
+                  );
 
                   return {
                     success: 1,
@@ -157,7 +183,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
   async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save();
-
     const payload: PostCreationRequest = {
       title: data.title,
       content: blocks,
@@ -174,32 +199,29 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   const { ref: titleRef, ...rest } = register("title");
 
   return (
-    <div className="w-full p-4 bg-zinc-50 rounded-lg border border-zinc-200">
+    <div className="subreddit-post-container">
+      <h3>Create a new post</h3>
       <form
         id="subreddit-post-form"
-        className="w-fit"
+        className=""
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="prose prose-stone dark:prose-invert">
-          <textarea
-            ref={(e) => {
-              titleRef(e);
-              // @ts-ignore
-              _titleRef.current = e;
-            }}
-            {...rest}
-            placeholder="Title"
-            className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none"
-          />
-          <div id="editor" className="min-h-[500px]" />
-          <p className="text-sm text-gray-500">
-            Use{" "}
-            <kbd className="rounded-md border bg-muted px-1 text-xs uppercase">
-              Tab
-            </kbd>{" "}
-            to open the command menu.
-          </p>
-        </div>
+        <textarea
+          ref={(e) => {
+            titleRef(e);
+            // @ts-ignore
+            _titleRef.current = e;
+          }}
+          {...rest}
+          placeholder="Title"
+          className="form-title"
+        />
+        <div id="editor" className="" />
+        <p className="bottom-line">
+          Use
+          <b> Tab </b>
+          to open the command menu.
+        </p>
       </form>
     </div>
   );

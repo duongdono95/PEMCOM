@@ -15,7 +15,6 @@ const MiniCreatePost: React.FC<MiniCreatePostProps> = ({
   session,
 }) => {
   const pathName = usePathname();
-  console.log(session);
   const router = useRouter();
   return (
     <div

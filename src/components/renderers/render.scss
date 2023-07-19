@@ -1,0 +1,13 @@
+.post-image {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+}
+.post-code {
+  background-color: var(--black01);
+  padding: 5px;
+  border-radius: 5px;
+  .text {
+    font-size: 12px;
+  }
+}

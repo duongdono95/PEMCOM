@@ -1,4 +1,5 @@
 import { Buttons } from "@/components/Buttons/Buttons";
+import CustomedFeed from "@/components/Feed/CustomedFeed";
 import GeneralFeed from "@/components/Feed/GeneralFeed";
 import { getAuthSession } from "@/lib/auth";
 import { Home } from "lucide-react";
@@ -11,7 +12,12 @@ export default async function HomePage() {
       <h1>New Feed</h1>
       <div className="home-page-content">
         <div className="left">
-          <GeneralFeed />
+          {session?.user ? (
+            // @ts-expect-error
+            <CustomedFeed />
+          ) : (
+            <GeneralFeed />
+          )}
         </div>
         <div className="right">
           <div className="top">

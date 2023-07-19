@@ -1,9 +1,21 @@
+import { ExtendedPost } from "@/types/db";
 import Link from "next/link";
 import React from "react";
 import CommentSection from "../CommentSection/CommentSection";
+import EditorOutput from "../Editor/EditorOutput";
 import VoteSection from "../VoteSection/VoteSection";
 import "./Post.scss";
-const Post = () => {
+
+interface PostProps {
+  post: ExtendedPost;
+  subredditName: string;
+}
+
+const Post: React.FC<PostProps> = ({
+  post,
+  subredditName,
+}) => {
+  // console.log(post);
   return (
     <div className="Post">
       <div className="post-detail">
@@ -14,19 +26,20 @@ const Post = () => {
           <div className="info-item">
             <Link href="/" className="community-name">
               <p className="prefix">r/</p>
-              <p>don123123</p>
+              <p>{subredditName}</p>
             </Link>
             <p>•</p>
             <div className="author">
               <p className="prefix">Posted By:</p>
-              <p>u/7WrpGBo1K_</p>
+              <p>{post.author.name}</p>
             </div>
             <p>•</p>
-            <div className="time">1d ago</div>
+            <div className="time">
+              {post.createdAt.toDateString()}
+            </div>
           </div>
           <div className="info-item post-content">
-            <h3>Post Title</h3>
-            <p>Post content</p>
+            <EditorOutput content={post.content} />
           </div>
         </div>
       </div>

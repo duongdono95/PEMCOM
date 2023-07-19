@@ -1,0 +1,25 @@
+.subreddit-post-container {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  h3 {
+    width: 100%;
+    background-color: var(--signature05);
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+  }
+  border: 1px solid var(--black02);
+  .form-title {
+    width: 100%;
+    background-color: var(--black005);
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+  }
+  .bottom-line {
+    font-size: 12px;
+    padding: 10px 20px;
+    opacity: 0.5;
+  }
+}
