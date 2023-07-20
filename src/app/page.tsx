@@ -12,12 +12,7 @@ export default async function HomePage() {
       <h1>New Feed</h1>
       <div className="home-page-content">
         <div className="left">
-          {session?.user ? (
-            // @ts-expect-error
-            <CustomedFeed />
-          ) : (
-            <GeneralFeed />
-          )}
+          {session?.user ? <CustomedFeed /> : <GeneralFeed />}
         </div>
         <div className="right">
           <div className="top">
@@ -26,8 +21,8 @@ export default async function HomePage() {
           </div>
           <div className="bottom">
             <p>
-              Your personal Breadit frontpage. Come here to
-              check in with your favorite communities.
+              Your personal Breadit frontpage. Come here to check in with your
+              favorite communities.
             </p>
             <Link href="/r/create">
               <Buttons.general content="Create Community" />

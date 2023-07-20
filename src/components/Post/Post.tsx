@@ -11,11 +11,7 @@ interface PostProps {
   subredditName: string;
 }
 
-const Post: React.FC<PostProps> = ({
-  post,
-  subredditName,
-}) => {
-  // console.log(post);
+const Post: React.FC<PostProps> = ({ post, subredditName }) => {
   return (
     <div className="Post">
       <div className="post-detail">
@@ -24,23 +20,23 @@ const Post: React.FC<PostProps> = ({
         </div>
         <div className="post-info">
           <div className="info-item">
-            <Link href="/" className="community-name">
+            <Link href={`/r/${subredditName}`} className="community-name">
               <p className="prefix">r/</p>
               <p>{subredditName}</p>
             </Link>
             <p>•</p>
             <div className="author">
               <p className="prefix">Posted By:</p>
-              <p>{post.author.name}</p>
+              <p>{post?.author.name}</p>
             </div>
             <p>•</p>
-            <div className="time">
-              {post.createdAt.toDateString()}
+            <div className="time">{post?.createdAt.toDateString()}</div>
+          </div>
+          <Link href={`/r/${subredditName}/post/${post.id}`}>
+            <div className="info-item post-content">
+              <EditorOutput content={post?.content} />
             </div>
-          </div>
-          <div className="info-item post-content">
-            <EditorOutput content={post.content} />
-          </div>
+          </Link>
         </div>
       </div>
       <div className="post-comment">
