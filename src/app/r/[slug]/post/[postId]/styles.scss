@@ -1,0 +1,36 @@
+.subreddit-post-page {
+  display: flex;
+  align-items: flex-start;
+  .left {
+    padding: 20% 0;
+    width: 100px;
+  }
+  .right {
+    width: 100%;
+    background-color: var(--black005);
+    padding: 20px;
+    border-radius: 10px;
+
+    .top {
+      display: flex;
+      opacity: 0.7;
+      font-size: 14px;
+      gap: 5%;
+    }
+    .time {
+      font-style: italic;
+    }
+    .title {
+      margin: 0;
+      padding-top: 10px;
+      border-bottom: 1px solid var(--black01);
+    }
+    .content {
+      margin-top: 20px;
+      padding: 20px 10px;
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+    }
+  }
+}

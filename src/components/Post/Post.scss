@@ -7,6 +7,14 @@
   .post-detail {
     display: flex;
     padding: 2% 2% 2% 0;
+    position: relative;
+    .filter {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    }
   }
   .post-vote {
     width: 10%;
@@ -19,6 +27,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     .info-item {
       display: flex;
       align-items: center;
@@ -50,6 +59,18 @@
   .post-comment {
     background-color: var(--black005);
     padding: 2% 2% 2% 0;
+    display: flex;
+    align-items: center;
+    .section-left {
+      width: 10%;
+      text-align: center;
+    }
+    .section-right {
+      width: 90%;
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+    }
   }
 }
 @media (max-width: 768px) {

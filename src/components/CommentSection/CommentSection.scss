@@ -1,14 +1,102 @@
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
 .comment-section {
+  margin: 20px 0 10px 0;
+  .comment-container {
+    background-color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  .section-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--black02);
+    padding: 10px 0;
+  }
+  .user-details {
+    .time {
+      font-size: 12px;
+    }
+  }
+  .comment-content {
+    margin-left: 50px;
+    padding: 10px 0;
+  }
+  .section-middle {
+  }
+  .section-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .reply-btn {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--black01);
+      }
+    }
+  }
+}
+.post-page-comment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .bottom {
+    display: flex;
+    background-color: var(--white05);
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 20px 0;
+    #comment {
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      outline: none;
+      flex-grow: 1;
+    }
+  }
+}
+.comment-votes {
   display: flex;
   align-items: center;
-  .section-left {
-    width: 10%;
-    text-align: center;
+  gap: 10px;
+}
+.reply-comment {
+  margin-left: 50px;
+  border-left: 4px solid var(--black02);
+  .comment-container {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: inset 3px 1px 5px var(--black01);
   }
-  .section-right {
-    width: 90%;
+  .replying-title {
+    font-size: 12px;
+  }
+  textarea {
+    width: 100%;
+    border: 2px solid white;
+    background-color: var(--white07);
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    margin: 10px 0;
+  }
+  .buttons {
     display: flex;
-    align-items: flex-end;
-    gap: 5px;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
   }
 }

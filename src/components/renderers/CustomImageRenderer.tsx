@@ -1,18 +1,13 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import "./render.scss";
+import Image from 'next/image';
+import './render.scss';
 function CustomImageRenderer({ data }: any) {
-  const src = data.file.url;
+  const url = data.file.url;
 
   return (
     <div className="post-image">
-      <Image
-        alt="image"
-        className="object-contain"
-        fill
-        src={src}
-      />
+      <div className="img" style={{ backgroundImage: `url(${url})` }}></div>
     </div>
   );
 }

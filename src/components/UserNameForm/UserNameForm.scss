@@ -1,0 +1,25 @@
+.username-form {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  .form-input-errors {
+    color: red;
+    font-size: 14px;
+  }
+  @media (max-width: 768px) {
+    padding: 5%;
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
+}

@@ -3,6 +3,7 @@
   &-content {
     width: 100%;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
   }
   .left-container {
@@ -46,4 +47,16 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .r-slug-layout-content {
+    flex-wrap: wrap-reverse;
+    gap: 30px;
+    .left-container,
+    .right-container {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
 }

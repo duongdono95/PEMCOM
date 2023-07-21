@@ -1,40 +1,21 @@
-import React from "react";
-import "./Buttons.scss";
-import Link from "next/link";
-import {
-  ChevronLeft,
-  Loader,
-  X,
-  ArrowBigDown,
-  ArrowBigUp,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import './Buttons.scss';
+import Link from 'next/link';
+import { ChevronLeft, Loader, X, ArrowBigDown, ArrowBigUp, Send, Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { VoteType } from '@prisma/client';
 
-interface GeneralButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  content: string;
+interface GeneralButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  content: any;
   disabled?: boolean;
   isPrimary?: boolean;
   isLoading?: boolean;
 }
 
-const GeneralButton = React.forwardRef<
-  HTMLButtonElement,
-  GeneralButtonProps
->(
-  (
-    { isLoading, isPrimary, content, disabled, ...props },
-    ref
-  ) => {
+const GeneralButton = React.forwardRef<HTMLButtonElement, GeneralButtonProps>(
+  ({ isLoading, isPrimary, content, disabled, ...props }, ref) => {
     return (
-      <button
-        className={`${
-          isPrimary ? "primary" : "secondary"
-        }-button`}
-        disabled={disabled}
-        ref={ref}
-        {...props}
-      >
+      <button className={`${isPrimary ? 'primary' : 'secondary'}-button`} disabled={disabled} ref={ref} {...props}>
         {isLoading ? (
           <span className="loading">
             <Loader />
@@ -44,9 +25,9 @@ const GeneralButton = React.forwardRef<
         )}
       </button>
     );
-  }
+  },
 );
-GeneralButton.displayName = "Button";
+GeneralButton.displayName = 'Button';
 
 const BackButton = ({ ...props }) => {
   const router = useRouter();
@@ -66,35 +47,52 @@ const CloseButton = () => {
   );
 };
 const VoteUpButton = ({
-  isVoted,
+  currentVote,
+  onClick,
 }: {
-  isVoted?: boolean;
+  currentVote?: VoteType | null | undefined;
+  onClick?: () => void;
 }) => {
   return (
     <div className="vote-up-button">
       <ArrowBigUp
-        fill={isVoted ? "var(--signature)" : "white"}
-        color={
-          isVoted ? "var(--signature)" : "var(--black05)"
-        }
+        fill={currentVote === 'UP' ? 'var(--signature)' : 'white'}
+        color={currentVote === 'UP' ? 'var(--signature)' : 'var(--black05)'}
+        onClick={onClick}
       />
     </div>
   );
 };
 const VoteDownButton = ({
-  isVoted,
+  currentVote,
+  onClick,
 }: {
-  isVoted?: boolean;
+  currentVote?: VoteType | null | undefined;
+  onClick?: () => void;
 }) => {
   return (
     <div className="vote-down-button">
       <ArrowBigDown
-        fill={isVoted ? "var(--signature)" : "white"}
-        color={
-          isVoted ? "var(--signature)" : "var(--black05)"
-        }
+        fill={currentVote === 'DOWN' ? 'var(--signature)' : 'white'}
+        color={currentVote === 'DOWN' ? 'var(--signature)' : 'var(--black05)'}
+        onClick={onClick}
       />
     </div>
+  );
+};
+const SendButton = ({
+  disabled,
+  onClick,
+  isLoading,
+}: {
+  disabled: boolean;
+  onClick: () => void;
+  isLoading: boolean;
+}) => {
+  return (
+    <button className="send-btn" disabled={disabled} onClick={onClick}>
+      {isLoading ? <Loader2 className="animate-spin" /> : <Send color="var(--signature)" />}
+    </button>
   );
 };
 export const Buttons = {
@@ -104,7 +102,7 @@ export const Buttons = {
       <div
         style={{
           backgroundImage:
-            "url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/32px-Google_%22G%22_Logo.svg.png)",
+            'url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/32px-Google_%22G%22_Logo.svg.png)',
         }}
         className="google-icon"
       ></div>
@@ -121,4 +119,5 @@ export const Buttons = {
   ),
   voteUp: VoteUpButton,
   voteDown: VoteDownButton,
+  sendBtn: SendButton,
 };
